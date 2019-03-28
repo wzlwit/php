@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <!-- PAGE settings -->
+    <title>{% block page_title %}{% endblock %}</title>
+    <base href="/todolist/">
+    <link href="./images/logo.ico" rel="icon">
+    <meta content="This is a the {{block('page_title')}} Page" name="description">
+    <meta content="Zhaolong Wang" name="author">
+    <!-- CSS dependencies -->
+    <link href="styles/main.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img alt="Test Logo" src="images/logo.png">
+            </a>
+            <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler" data-target="#navbarResponsive" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./add">Add</a>
+                    </li>
+                    {% if islogin %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="./logout">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="./login">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="text-center my-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-left">
+                    <h1 class="text-capitalize display-4 font-weight-bold text-m">Don't forget about...</h1>
+                    <p class="lead text-muted">Create a little list in order to help me not forget about all the things
+                        I ususally forget about.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-3">
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <footer class="footer section-fade-in-out py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>PHP Programming Test</h5>
+                    <hr class="my-1">
+                    <div class="row">
+                        <div class="col-6 col-md-12">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="#">Home</a>
+                                </li>
+                                <li>
+                                    <a href="./add">Create a New Task</a>
+                                </li>
+                                {% if islogin %}
+                                <li>
+                                    <a href="./logout">Logout</a>
+                                </li>
+                                {% else %}
+                                <li>
+                                    <a href="./login">Login</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 offset-md-2">
+                    <h5 class="text-md-right">Hello Prince William or Guest</h5>
+                    <hr class="my-1">
+                    <p>Suspendisse velit lacus, euismod sed tempor at, congue sit amet libero. Donec sit amet urna arcu.
+                        Quisque est libero, dapibus non nibh at, convallis sollicitudin libero. Nam maximus maximus
+                        erat, id maximus elit hendrerit eget. Maecenas tortor nisi, viverra id posuere quis, ultrices
+                        non mi. Ut consectetur diam id consectetur porta. Ut maximus enim quis dictum elementum.
+                        Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script crossorigin="anonymous" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        src="http://code.jquery.com/jquery-3.2.1.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

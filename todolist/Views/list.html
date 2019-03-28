@@ -1,0 +1,49 @@
+{% extends "main.html" %}
+{% block page_title %}Home{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2>List of All the Tasks I Need to Not Forget About</h2>
+        <hr class="my-1">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 p-3">
+        <table class="table table-compact table-hover table-striped table-bordered">
+            <tbody>
+
+                {% for task in tasks %}
+                <tr>
+                    {% if task.completed %}
+                    <td class="completed text-muted">
+                        {% else %}
+                    <td>
+                        {% endif %}
+                        <h4 class="mb-1">{{task.name}}
+                            <small class="text-muted">{{task.date_added}}</small>
+                        </h4>
+                        <p class="mb-0">
+                            {{task.description}}</p>
+                    </td>
+                    <td class="text-right">
+                        {% if not task.completed %}
+                        <form action="./complete" class="m-0" method="POST">
+                            <input class="btn btn-success btn-sm mb-1" type="submit" value="Completed">
+                            <input type="hidden" name="i_id" value="{{task.id}}">
+                        </form>
+                        {% endif %}
+                        {% if islogin %}
+                        <form action="./delete" method="POST">
+                            <input class="btn btn-warning btn-sm  mb-1" type="submit" value="Delete">
+                            <input type="hidden" name="i_id" value="{{task.id}}">
+                        </form>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+{% endblock %}
