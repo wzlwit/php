@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>List Books</title>
+  <!-- CSS dependencies -->
+  <link rel="stylesheet" href="css/style.css" type="text/css"> </head>
+
+<body>
+  <div class="py-2 text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="display-3 text-capitalize">My Library</h1>
+          <ul class="nav">
+            <li class="nav-item">
+        			<a class="nav-link" href="index.php">Home</a>
+        		</li>
+            <li class="nav-item">
+        			<a class="nav-link" href="edit_books.php">Create Book</a>
+        		</li>
+        		<li class="nav-item">
+        			<a class="nav-link" href="books.php">List Books</a>
+        		</li>
+        		<li class="nav-item">
+        			<a href="members.php#create" class="nav-link">Create Member</a>
+        		</li>
+        		<li class="nav-item">
+        			<a class="nav-link" href="members.php#list">List Members</a>
+        		</li>
+        	</ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2>List of books</h2>
+          <hr>
+          <?php if (isset($_GET['new'])){
+        		echo "<div class='alert alert-success'><strong>CONGRATULATIONS ". $_GET['new'] . "</strong></div>";
+          }else if (isset($_GET['updated'])){
+        		echo "<div class='alert alert-secondary'><strong>Book Updated ". $_GET['updated'] . "</strong></div>";
+          }else if (isset($_GET['removed'])){
+        		echo "<div class='alert alert-warning'><strong>Book Removed ". $_GET['removed'] . "</strong></div>";
+        	} ?>
+          <div class="table-responsive col-md-12">
+            <table class="table table-hover table-striped table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th>ID</th>
+            			<th>Name</th>
+            			<th>Author</th>
+                  <th>Year</th>
+                  <th>Editor</th>
+                  <th>Description</th>
+            			<th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($books as $book){ ?>
+            			<tr>
+            				<td><?php echo $book['id']; ?></td>
+            				<td><?php echo $book['title']; ?></td>
+            				<td><?php echo $book['author']; ?></td>
+                    <td><?php echo $book['pub_year']; ?></td>
+                    <td><?php echo $book['editor']; ?></td>
+                    <td><?php echo nl2br($book['description']); ?></td>
+            				<td>
+            					<a href="edit_books.php?action=update&book=<?php echo $book['id']; ?>">Update</a> |
+            					<a href="edit_books.php?action=delete&book=<?php echo $book['id']; ?>&name=<?php echo $book['title']; ?>">Delete</a>
+            				</td>
+            			</tr>
+            		<?php } //end of while loop ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p class="text-right">There are <?php echo count($books);?> books in the library</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

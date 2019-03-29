@@ -1,0 +1,12 @@
+RewriteEngine On
+
+#RewriteBase /users
+
+# file not found
+RewriteCond %{REQUEST_FILENAME} !-f
+#directory not found
+RewriteCond %{REQUEST_FILENAME} !-d
+#symbolic link not found
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule .* index.php [L,QSA]
+#QSA to append an existing query string after the URI has been rewritten
