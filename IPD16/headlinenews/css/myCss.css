@@ -1,0 +1,391 @@
+/* @font-face {
+    font-family: 'Angeline Vintage';
+    src: url('../fonts/Angeline Vintage.ttf');
+} */
+
+body {
+    margin-top: 50px;
+}
+
+.panel {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important;
+}
+
+
+.modal-header, h4 .close {
+  background-color: #1ac7c3;
+  color:white !important;
+  text-align: center;
+  font-size: 30px;
+}
+.modal-footer {
+  background-color: #f9f9f9;
+}
+
+
+#footer {
+   color:white;
+    padding: 25px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.spinnerExample {margin:10px 0;}
+
+
+.list-nav {
+    line-height: 50px;
+	float:left;
+}
+.type h5 {
+	color: #282828;
+	font-size: 1.2em;
+	font-weight: 500;
+	font-family: 'Georgia Italic';
+}
+.list-nav ul li {
+	display:inline-block;
+	margin:0 1.5em;
+}
+.list-nav ul li a {
+	font-family: 'Georgia Italic';
+	text-decoration:none;
+	color:#798184;
+	font-size:1em;
+}
+.list-nav ul li a.active {
+	  color: #1ac7c3;
+}
+.list-nav ul li a:hover {
+	color: #1ac7c3;
+}
+
+
+#footermini
+{
+    color:white;
+     padding: 5px;
+     margin-left: 15px;
+     margin-right: 15px;
+ }
+
+.well {
+    background-color: #222;
+    height: 150px;
+    border-color: #222 }
+
+.well:not(:last-child){
+    border-right-color: white;
+}
+
+#footer a{color:white;}
+
+#footermini a{color:white;}
+
+.searchbar{
+
+    margin-bottom: 15px;
+}
+
+.searchbarbottom{
+     margin-right: 30px;
+
+    margin-bottom: 15px;
+
+}
+.warnning {
+    font-weight: bold;
+    float: right;
+}
+
+.panel-footer {
+    height: 200px;
+    background-color: azure;
+}
+
+
+.bottom {
+    position: relative;
+    bottom: 0;
+    right: 0;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+
+a.navbar-brand {
+    font-family: ' times new roman';
+    font-size: 30px;
+    padding-top: 15px;
+    text-shadow: #595959 0.1em 0.1em 0.2em;
+}
+
+.carousel-inner>.item>img {
+    width: 100%;
+    height: 100%;
+}
+
+.dropdown-menu {
+    min-width: 200px;
+}
+/* number counter */
+
+.qty {
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+input.qtyplus { width:25px; height:25px;}
+input.qtyminus { width:25px; height:25px;}
+/* end counter */
+
+.pagination>li>a, .pagination>li>span{
+
+margin-left: 20px;
+
+}
+
+.media, .categ{border:lightgrey;
+
+border-width:1px; 
+
+border-style: solid;
+
+box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important;
+
+}
+
+.categ:not(:first-of-type){margin-top:15px;}
+
+.list-group-item{border: 0px;}
+
+.avatar{width: 80px;
+border-bottom: rgb(211, 203, 203) solid 1px;
+text-align: center;
+}
+.color1{background-color: tomato;}
+.number{
+    color:white;
+     background-color: #337ab7;
+    }
+
+    .glyphicon-leaf{color:forestgreen;}
+    .glyphicon-grain{color: darkgoldenrod; }
+   .glyphicon-flag{color:red}
+
+
+  .iconavatar{
+      
+    width: 80px;
+   
+    text-align: center;}
+
+
+    .media-body,.categ{padding:5px}
+
+.mediabody{
+  
+    float: left;
+    width: 80%;
+}
+
+.mediainfo{
+   border-left: #f1f1f1 solid 1px;
+    float: right;
+    width:15%;
+}
+#topic, #eyes{border-bottom: #f1f1f1 solid 1px;
+text-align: center;
+color: #989c9e}
+#time{
+    text-align: center;
+    color: red;}
+
+/* 气泡 */
+blockquote{
+font-size: 12px;
+   border-left: 1px solid #eee;
+display: inline-block;
+align-self: center;}
+.bubble{
+    position:relative;
+padding:10px;
+margin:1em 0em 3em;
+width:40px;
+line-height:1.2; 
+text-align:center;
+color:#fff;
+background:#989c9e;
+-moz-border-radius:10px;
+-webkit-border-radius:10px;
+border-radius:10px;
+}
+.bubble:after {
+    content:"\00a0";
+width:0;
+height:0;
+display:block;
+border-style:solid;
+border-width:10px;
+border-color:#989c9e transparent transparent transparent;
+position:absolute;
+z-index:-1;
+bottom:-20px;
+left:10px; 
+}
+
+
+
+
+
+/* 气泡结束 */
+@media (max-width: 414px) {
+    .jumbotron {
+        background-image: url("../images/topmini.jpg");
+        background-size: 100%;
+        height: 60px;
+        background-position: 50% 100%;
+        margin-bottom: 5px;
+    }
+    a.navbar-brand {
+    
+        font-size: 20px;
+       
+    }
+    .panel-footer{
+height: auto;
+    }
+.searchbar{
+    padding-left:0; 
+}
+
+    
+}
+
+
+
+@media screen and (min-width: 414px) and  (max-width: 560px) {
+    .jumbotron {
+        background-size: 100%;
+        background-position: 50% 100%;
+        height: 70px;
+        padding: 2px;
+    }
+}
+@media screen and (min-width: 560px) and  (max-width: 780px) {
+    .jumbotron {
+        background-size: 100%;
+        background-position: 50% 100%;
+        height: 100px;
+        padding: 2px;
+    }
+}
+
+@media screen and (min-width: 780px) and  (max-width: 1024px) {
+    .jumbotron {
+        background-size: 100%;
+        background-position: 50% 100%;
+        height: 140px;
+        padding: 2px;
+    }
+}
+
+
+@media(max-width:991px)
+{
+    body{margin-bottom: 60px;}
+    .well:not(:last-child){
+        border-color:#222;
+    }
+
+    .well:not(:last-child){
+        border-bottom-color: white;
+    }
+    
+}
+
+
+@media (max-width: 944px) {
+
+
+
+
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        /* padding-bottom: 10px; */
+    }
+    .navbar-text {
+        float: none;
+        /* margin: 15px 0; */
+    }
+    .navbar-collapse.collapse.in {
+        display: block!important;
+    }
+    .collapsing {
+        overflow: hidden!important;
+    }
+}
+
+.blink_me {
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+    animation-name: blinker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {
+    0% {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.0;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}
+
+@-webkit-keyframes blinker {
+    0% {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.0;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}
+
+@keyframes blinker {
+    0% {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.0;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}

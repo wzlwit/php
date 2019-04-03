@@ -1,0 +1,125 @@
+{% extends "main.html" %}
+{% block page_title %}admin{% endblock %}
+
+{% block content %}
+
+<div class="col-lg-8">
+  <ul class="nav nav-tabs">
+    {% for country in countrys %}
+    <li {% if loop.index == 1 and activity=='none' %}class="active" {% endif %} {% if country.location == location %}
+      class="active" {% endif %}>
+      <a data-toggle="tab" href="#menu{{loop.index}}">{{country.location }}<span
+          class="badge">{{country.number}}</span></a>
+    </li>
+    {% endfor %}
+    <li {% if activity=='update' %}class="active" {% endif %}>
+      <a data-toggle="tab" href="#menucreate" style="color:red;">{% if activity=='none' %} Add {% else %} Update
+        {% endif %} a channel</a></li>
+  </ul>
+  <div class="tab-content">
+    {% for country in countrys %}
+    <div id="menu{{loop.index}}" class="tab-pane 
+                  {% if loop.index == 1 and activity=='none' and location != country.location %} 
+                  active 
+                  {% elseif country.location == location %} 
+                  active 
+                  {% else %} 
+                  fade 
+                  {% endif %}">
+      <table class="table table-hover table-striped table-bordered">
+
+        <thead class="thead-dark">
+          <tr>
+            <th>icon</th>
+            <th>Name</th>
+            <th>source</th>
+            <th>country</th>
+            <th>catrgories</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        {% for  channel in country.channels %}
+        <tr>
+          <td> <img src="images/{{channel.icon}}"></td>
+          <td>{{channel.name }}</td>
+          <td>{{channel.source }}</td>
+          <td>{{channel.location }}</td>
+          <td>{{channel.catrgories }}</td>
+          <td>some Description will add in database</td>
+
+          <td>
+            <a href="{{form_action}}?id={{channel.ch_id}}&del=1&location={{channel.location}}">delete</a> <a
+              href="{{form_action}}?id={{channel.ch_id}}">update</a>
+
+          </td>
+
+
+        </tr>
+        {% endfor %}
+
+      </table>
+    </div>
+    {% endfor %}
+
+    <div id="menucreate" class="tab-pane {% if activity=='edit' %} active disable {% else %} fade {% endif %} ">
+
+      <div>
+        <form action="{{form_action}}" method="POST" name='new_channel' enctype="multipart/form-data">
+          <div class="form-group">
+            <label>Name {{channel_update.name}}</label>
+            <input type="text" class="form-control" name="name"
+              value="{% if channel_update.name != ''%} {{channel_update.name}} {% endif %}">
+            <small class="form-text text-muted"></small>
+          </div>
+          <div class="form-group">
+            <label>source</label>
+            <input type="text" class="form-control" name="source"
+              value="{% if channel_update.source != ''%} {{channel_update.source}} {% endif %}">
+            <small class="form-text text-muted"></small>
+          </div>
+          <div class="form-group">
+            <label>Icon</label>
+            {% if channel_update.source != ''%}
+            <img src="images/{{channel_update.icon}}" name='img' value='img'>
+            {% endif %}
+            <input type="file" class="form-control" name="icon" id="icon">
+            <small class="form-text text-muted"></small>
+          </div>
+
+
+          <div class="form-group">
+
+            <select class="form-control" name="location" />
+            <option value="">----</option>
+            {% for continent in continents %}
+            <option value="{{contient}}">{{continent}}</option>
+            {%  endfor %}
+            </select>
+            {# <label>Location</label>
+            <input type="text" class="form-control" name="location"
+              value="{% if channel_update.location != ''%} {{channel_update.location}} {% endif %}"> #}
+
+
+            <small class="form-text text-muted"></small>
+          </div>
+
+          <div class="form-group">
+            <label>Category</label>
+            <input type="text" class="form-control" name="Category"
+              value="{% if channel_update.categotirs != ''%} {{channel_update.categotirs}} {% endif %}">
+            <small class="form-text text-muted"></small>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          {# <input type="hidden" name="id" value="<?php echo $id; ?>" /> #}
+        </form>
+      </div>
+
+      form to add new channel or update a channel
+    </div>
+  </div>
+
+
+</div>
+
+{% endblock %}

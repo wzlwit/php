@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myCss.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+        crossorigin="anonymous">
+<script src='js/myjs.js'></script>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <title> {% block page_title %}Headline News{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="./images/tag.ico" />
+    <meta content="    " name="description">
+</head>
+
+<body>
+
+        <script>
+                $(document).ready(function(){
+                  $("#myBtn").click(function(){
+                    $("#myModal").modal();
+                  });
+                });
+                </script>
+    <div class="container-fluid navbar-fixed-top" id="top">
+
+        <nav class="navbar navbar-inverse " id="autocollapse">
+
+            <div class="container-fluid">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand">HeadLine News</a>
+                </div>
+                <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="channels.php"> Channels </a></li>
+                        {% if not is_logged_in %}
+                        <li><a id="myBtn">Login</a></li>
+                        {% else %}
+                        <!-- to do log out -->
+                        <li><a href="logout.php"  id="logout">Logout</a></li>
+
+                        {% endif %}
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+ 
+
+
+    <div class="container">
+
+ 
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+                
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 id="msg"><span class="glyphicon glyphicon-lock" ></span> Login: </h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+              <form role="login" action=""  method="POST" name="login" onsubmit="return validation()">
+                <div class="form-group">
+                  <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                  <input type="text" class="form-control" id="usrname" placeholder="Enter email" name="email">
+                </div>
+                <div class="form-group">
+                  <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                  <input type="text" class="form-control" id="psw" placeholder="Enter password" name="password">
+                </div>
+                <div class="checkbox">
+                  <label><input name="remember" type="checkbox" value="" checked>Remember me</label>
+                </div>
+                   <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+              <p>Not a member? <a href="#">Sign Up</a></p>
+              <p>Forgot <a href="#">Password?</a></p>
+            </div>
+          </div>
+          </div>
+  </div>
+
+<div class="row " >
+        <div class="col-lg-8 col-md-9  col-sm-3  col-xs-3 text-center">   
+        
+                {# <div class="list-nav">
+                        <ul>                                                                 
+                            <li><a href="#">menu1 </a></li>|
+                            <li><a href="#">menu2</a></li>|
+                            <li><a href="#">menu3</a></li>|
+                            <li><a href="#">menu4</a></li>|
+                            <li><a class="active" href="#">menu5</a></li>|
+                        </ul>
+                    </div>  #}
+                
+                
+                </div> 
+    <div class="col-lg-4 col-md-3 col-sm-8 col-xs-8 tex-right " style="padding: 15px;" >
+
+
+            <form action="./comingsoon.html" method="GET">
+                <div >
+                    <div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" id="txtSearch" />
+                            <div class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+    </div>
+    
+    </div>
+        
+
+
+    {% block content %}{% endblock %}
+
+
+
+
+<div class="col-lg-4 ">
+<div class="categ">
+    <span style="text-align: center;    display: block; border-bottom: rgb(211, 203, 203)  solid 1px;" ><strong> Top 5 News</strong></span>
+        
+        <ul class="list-group">
+                <li class="list-group-item"><a href="./comingsoon.html">New fsjk dfs</a><span class="badge">12</span></li>
+                <li class="list-group-item"><a href="./comingsoon.html">df dfs  sdfsf</a> <span class="badge">45</span></li> 
+                <li class="list-group-item"><a href="./comingsoon.html">Nfs fsgr rgsf </a> <span class="badge">23</span></li> 
+
+                <li class="list-group-item"><a href="./comingsoon.html">rg sggd eeefgre fes </a><span class="badge">15</span></li>
+                <li class="list-group-item"><a href="./comingsoon.html">fjggklg nfn fjr </a> <span class="badge">45</span></li> 
+                <li class="list-group-item"><a href="./comingsoon.html">fhe  rhr rhrhbe </a> <span class="badge">83</span></li> 
+              </ul>
+</div>
+<div class="categ">
+<h4>Top 5 Channle </h4>
+
+        <div class="progress">
+          <div class="progress-bar color1" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">Name of channel, number
+            
+          </div>
+        
+        
+      </div>
+      <div class="progress">
+      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:60%">Name of channel, number
+            
+        </div>
+    </div>
+    <div class="progress">
+            <div class="progress-bar " role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">Name of channel, number
+                  
+              </div>
+          </div>
+          <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:40%">Name of channel, number
+                      
+                  </div>
+              </div>
+              <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:30%">Name of channel, number
+                          
+                      </div>
+                  </div>
+</div>
+<div class="categ"><ul class="list-group">
+
+        <li class="list-group-item" ><strong> other activities </strong> </li>   
+
+        <li class="list-group-item" style="    border-top: 1px solid #ddd;">First </li>
+        <li class="list-group-item" style="    border-top: 1px solid #ddd;">Second </li>
+        <li class="list-group-item" style="    border-top: 1px solid #ddd;">Third </li>
+      </ul></div>
+</div>
+
+    </div>
+    
+
+  
+
+    <div class="container-fluid navbar-inverse page-footer hidden-sm hidden-xs" id="footer">
+
+
+        <div class="row text-center text-md-left">
+
+            <div class="col-md-4 col-lg-4 col-xl-4 well ">
+                <h4 class="text-uppercase mb-4">Headline news</h4>
+                <p> Lorem Ipsum is not simply random text. It has roots in a piece
+                    of classical Latin
+                    literature from 45 BC, making it over 2000 years old. Richard McClintock,
+                </p>
+
+            </div>
+
+
+
+            <div class="col-md-4 col-lg-4 col-xl-4  well ">
+                <h4 class="text-uppercase">Useful links</h4>
+                <p>
+                    <a href="#!">Your Account</a>
+                </p>
+
+                <p>
+                    <a href="#!">About us</a>
+                </p>
+                <p>
+                    <a href="#!">Help</a>
+                </p>
+            </div>
+
+            <div class="col-md-4 col-lg-4 col-xl-4  well">
+                <h4 class="text-uppercase">Contact</h4>
+                <p>
+                    <i class="fas fa-home mr-3"></i> Montreal, QC, Ca</p>
+                <p>
+                    <i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
+                <p>
+                    <i class="fas fa-phone mr-3"></i> + 01 000 000 000 000</p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="row  align-items-center copyright">
+
+
+            <div class="col-md-7 col-lg-8">
+
+
+                <p class="text-center text-md-left">Bianyu WAMG,your name, your name ,your name  © 2019 Copyright:
+                    <a href="#">
+                        <strong> www.headlinenews.com</strong>
+                    </a>
+                </p>
+
+            </div>
+
+
+            <div class="col-md-5 col-lg-4 ml-lg-0">
+
+                <div class="text-center text-md-right">
+                    <ul class="list-unstyled list-inline">
+
+                        <li class="list-inline-item">
+                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <i class="fab fa-weixin"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="container-fluid navbar-inverse page-footer visible-xs visible-sm navbar-fixed-bottom copyright" id="footermini">
+
+        <div class="row  align-items-center ">
+
+            <div class="col-md-5 col-lg-4 ml-lg-0">
+
+                <div class="text-center text-md-right">
+                    <ul class="list-unstyled list-inline">
+
+                        <li class="list-inline-item">
+                            <a class="btn-floating btn-sm rgba-white-slight mx-1 col-sm-3">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn-floating btn-sm rgba-white-slight mx-1 col-sm-3">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn-floating btn-sm rgba-white-slight mx-1 col-sm-3">
+                                <i class="fab fa-weixin"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn-floating btn-sm rgba-white-slight mx-1 col-sm-3">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

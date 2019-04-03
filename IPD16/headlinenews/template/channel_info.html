@@ -1,0 +1,36 @@
+{% extends "main.html" %}
+{% block page_title %}Channels{% endblock %}
+
+{% block content %}
+
+<div class="col-lg-8">
+
+      
+  <ul class="nav nav-tabs">
+
+      {% for country in countrys %}
+      <li {% if loop.index == 1 %}class="active"{% endif %}>
+        <a data-toggle="tab" href="#menu{{loop.index}}">{{country.location }}<span class="badge">{{country.number}} </span></a>
+      </li>
+       {% endfor %}
+      </ul>
+      <div class="tab-content">
+
+          {% for country in countrys %}
+        <div id="menu{{loop.index}}" class="tab-pane fade">   
+          {% for  channel in country.channels %}
+        <img src= "images/{{channel.icon}}.png" alt="{{channel.name }}" title="{{channel.name }}" >
+        
+        {% endfor %}
+
+
+        <p>will replace this part to a page call action->source:  {{channel.source}}</p>
+        </div>
+        {% endfor %}
+      </div> 
+           
+        
+</div>
+
+
+{% endblock %}

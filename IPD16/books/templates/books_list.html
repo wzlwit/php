@@ -1,0 +1,56 @@
+{% extends "main.html" %}
+{# cannnot put in the first #}
+{% block page_title %}
+    Book List
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <h2>List of books</h2>
+            <hr>
+                <div class="table-responsive col-md-12">
+                    <table class="table table-hover table-striped table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Author</th>
+                                <th>Year</th>
+                                <th>Editor</th>
+                                <th>Description</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for book in books %}
+                                <tr>
+                                    <td>{{ book.id }}</td>
+                                    <td>{{ book.title }}</td>
+                                    <td>{{ book.author }}</td>
+                                    <td>{{ book.year }}</td>
+                                    <td>{{ book.editor }}</td>
+                                    <td>{{ book.description }}</td>
+                                    <td>
+                                        {% if islogin %}
+                                            <a href="create_book.php?b_id={{book.id}}">Update</a>
+                                        {% endif %}
+                                        {% if isadmin %}
+                                            <a href="create_book.php?b_id={{book.id}}&delete=1">Delete</a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-right">There are
+                    {{books|length}}
+                    books in the library</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

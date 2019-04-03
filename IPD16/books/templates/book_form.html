@@ -1,0 +1,60 @@
+{% extends "main.html" %}
+{% block page_title%}
+    {{title}}
+{% endblock %}
+{% block content %}
+    <!DOCTYPE html>
+    <div class="row">
+        <div class="col-12">
+            <h2>{{title}}</h2>
+            <hr>
+                {% if error %}
+                    <div class='alert alert-danger'>
+                        <strong>An error has occured!!!</strong><br/>
+                        {% for e in error %}
+                            {{e}}<br/>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-8 offset-md-2">
+                    <form action="" method="POST">
+                        <div class="form-group">
+                            <label>Book Title</label>
+                            <input type="text" class="form-control" name="name" value="{{book.title}}"></input>
+                            <small class="form-text text-muted"></small>
+                        </div>
+                        <div class="form-group">
+                            <label>Author</label>
+                            <input type="text" class="form-control" name="author" value="{{book.author}}">
+                                <small class="form-text text-muted"></small>
+                            </div>
+                            <div class="form-group">
+                                <label>Year of Publication</label>
+                                <select class="form-control" name="year"/>
+                                <option value="">----</option>
+                                {% for y in now|date("Y") .. (now|date("Y")-100)  %}
+                                    <option value="{{y}}" {% if book.year==y %} selected {% endif %}>
+                                        {{y}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                            <small class="form-text text-muted"></small>
+                        </div>
+                        <div class="form-group">
+                            <label>Editor</label>
+                            <input type="text" class="form-control" name="editor" value="{{book.editor}}">
+                                <small class="form-text text-muted"></small>
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" name="description" rows="3">{{book.description}}</textarea>
+                            </div>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <input type="hidden" name="id" value="<?php echo $id; ?>"/>
+                        </form>
+                    </div>
+                </div>
+            </html>
+        {% endblock %}
