@@ -1,0 +1,58 @@
+{% extends "main.html" %}
+{% block title%}Poll Results{% endblock %}
+{% block content %}
+  <div class="pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2>Poll Results</h2>
+          <hr class="mb-4"> </div>
+      </div>
+	  {% if done %}
+      <div class="row">
+        <div class="col-md-12">
+          <div class="alert alert-success">
+            <h4 class="alert-heading">Well done!</h4>
+            <p class="mb-0">Thank you for answering our poll</p>
+          </div>
+        </div>
+      </div>
+	  {% endif %}
+	  {% if logged_in %}
+      <div class="row">
+        <div class="col-md-12 p-3">
+		{% for y in answer %}
+          <table class="table table-hover table-striped table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th>{{y.question}}</th>
+                <th>Total Votes</th>
+              </tr>
+            </thead>
+            <tbody>
+			{% for x in y.answers %}
+              <tr>
+                <th>{{x.answer}}</th>
+                <td>{{x.total}}</td>
+              </tr>
+			{% endfor %}
+              <tr class="bg-dark"></tr>
+            </tbody>
+          </table>
+		  {% endfor %}
+        </div>
+      </div>
+	  {% else %}
+	        <div class="row">
+        <div class="col-md-12">
+          <div class="alert alert-warning">
+            <h4 class="alert-heading">Sorry!</h4>
+            <p class="mb-0">Must be logged in to view content.</p>
+          </div>
+        </div>
+      </div>
+	  {% endif %}
+    </div>
+  </div>
+  {% endblock %}
+ 

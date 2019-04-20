@@ -1,0 +1,9 @@
+# This is a comment
+
+RewriteEngine On
+
+# Setup rewrite
+
+RewriteRule ^q-([0-9]+)$ question.php?id=$1
+RewriteRule ^login$ login.php
+RewriteRule ^results$ results.php

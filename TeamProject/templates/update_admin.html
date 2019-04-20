@@ -1,0 +1,66 @@
+{% extends "main.html"%}
+
+{% block title %}UpdateProduct{% endblock %}
+
+{% block content %}
+<div id="reg_page" class="container my-5 p-5 border rounded">
+<form action="update_admin.php" method="POST" enctype="multipart/form-data" >
+  <div class="form-row">    
+    <div class="form-group col-md-6">
+      <label for="ProName">ProductName</label>
+      <input type="text" class="form-control" id="ProName" name="ProName" value ="{{ product.ProName }}">     
+    </div>            
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label for="ProPrice">Unit Price/$</label>
+      <input type="number" class="form-control" id="ProPrice" name="ProPrice" value="{{product.ProPrice}}">      
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label for="InvQty">Inventory</label>
+      <input type="number" class="form-control" value="1" id="InvQty" name="InvQty" value = "{{product.InvQty}}" >
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="ProCategory">Category:</label><br/>     
+      <select id="ProCategory" name="ProCategory">
+          {% for cate in cates %}
+            {% if cate == product.ProCategory %}
+                <option value="{{ cate }}" selected >{{ cate }}</option>
+            {% elseif cate == 1 %}
+                <option value="1">-SELECT-</option>
+            {% else %}
+                <option value="{{ cate }}">{{ cate }}</option>
+            {% endif %}
+          {% endfor %}
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+      <div>          
+          <label for="Active">Active:</label>
+          <input type="checkbox" id="Active" name="Active" value='1' {% if product.Active == 1 %} checked {% endif %} >
+      </div>
+    </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <img src="{{ product.ProImg }}" alt="productImage" >
+      <input type="file" class="form-control" id="ProImg" name="ProImg" >
+    </div>
+  </div>
+  <div class="form-row">
+    <div>
+      <label for="ProDesc">Description</label>      
+      <textarea id="ProDesc" class="form-control" name="ProDesc" cols="80" rows="10">{{ product.ProDesc }}</textarea>
+    </div>
+  </div>   
+  <div class="form-row">
+        <input type="hidden" value= "{{ product.ProID }}" name="hid_id" >
+        <button type="submit" class="btn btn-secondary">Update</button>    
+  </div>
+ </form> 
+</div>
+{% endblock %}

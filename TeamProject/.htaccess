@@ -1,0 +1,11 @@
+# This is a comment
+
+#Start the rewrite engine
+RewriteEngine on
+
+
+#this is for login page
+RewriteRule ^login$ login.php
+
+#this is for SESSION
+RewriteRule ^results$ index.php

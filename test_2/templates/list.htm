@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+
+{% block content %}
+  <div class="py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2>List of All the Tasks I Need to Not Forget About</h2>
+          <hr class="my-1"> </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 p-3">
+          <table class="table table-compact table-hover table-striped table-bordered">
+            <tbody>
+              <!-- Example of a table rows for a user is NOT logged in and a task is NOT completed -->
+              {% for x in todo %}
+              <tr>
+                {% for y in x %}
+                <td class="{% if y.completed == 1 %}completed{% endif %}">
+                  <h4 class="mb-1">{{y.name}}
+                    <small class="text-muted">{{y.date_added}}</small>
+                  </h4>
+                  <p class="mb-0"> {{y.description}}&nbsp;</p>
+                </td>
+                {% endfor %}
+                <td class="text-right">
+                  <form class="m-0" method="post">
+                    {% for y in x %}
+                    <input type="hidden" value="{{y.id}}" name="completed">
+                    {% endfor %}
+                    <input type="submit" class="btn btn-success btn-sm mb-1" value="completed">
+                 </form>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

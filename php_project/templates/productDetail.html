@@ -1,0 +1,48 @@
+{% extends "main.html"%}
+
+{% block title %}ProDetail{% endblock %}
+
+{% block content %}	 
+
+<div id="reg_page" class="container my-5 p-5 border rounded">
+		 
+<div class="container" id="product-section">
+  <div class="row" style="width: 55rem;">
+   <div class="col-md-6">
+ <img class="card-img-top" src="images/laptop1.jpg" alt="Card image cap"/>
+ </div>
+   <div class="col-md-6" >
+  <div class="col-md-12">
+</div><!-- end row-->
+          <table class="table table-hover table-striped table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th> Title </th>
+                <th> Price </th>
+              </tr>
+            </thead>
+            <tbody>
+                
+                  {% for pr in Productstbl %}
+                    
+                  <tr>
+                    <td>{{ pr.title }}</td>
+                    <td>{{ pr.price }}</td>
+                  </tr>
+                  
+                  {% endfor %}
+				  
+				  <tr>
+						<td>TitleDB</td>
+						<td>PriceDB</td>
+				  </tr>
+              </tbody>
+          </table>
+        </div>
+      </div>
+	</div>
+</div>
+  </div><!-- end row -->
+ </div><!-- end container -->
+</div>
+{% endblock %}

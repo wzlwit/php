@@ -1,0 +1,57 @@
+{% extends "main.html"%}
+
+{% block title %}ProDetail{% endblock %}
+
+{% block content %}	 
+
+<div id="reg_page" class="container my-5 p-5 border rounded">
+<div class="container" id="product-section">
+  <div class="row" style="width: 55rem;">
+   <div class="col-md-6">
+ <img class="card-img-top" src="{{ pros.ProImg }}" alt="productImg"/>
+ </div>
+   <div class="col-md-6" >
+  <div class="col-md-12">  
+    <form action="addOrder.php" method="POST" enctype="multipart/form-data">
+          <table class="table table-hover table-striped table-bordered">            
+            <input type="hidden" name="proid" id="proid" value={{pros.ProID}}>
+            <input type="hidden" name="proName" id="proid" value={{pros.ProName}}>
+            <input type="hidden" name="proPrice" id="proid" value={{pros.ProPrice}}>
+            <tr>
+              <td>ProductName:</td>
+              <td>{{ pros.ProName }}</td>
+            </tr>
+            <tr style="color:red;">
+              <td>Price:</td>
+              <td> ${{ pros.ProPrice }}</td>
+            </tr>
+            <tr>
+              <td>The remaining amount:</td>
+              <td>{{ pros.InvQty }}</td>
+            </tr>
+            <tr>
+                <td>Order count:</td>
+                <td><input type="number" name="count" id="num_count" style="width:40px;" value="1" max="20" min="1" ></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                {{ pros.ProDesc }}
+              </td>
+            </tr>
+          </table>
+          {% if user_name != "" %}
+          <div>
+            <input type="submit" class="btn btn-secondary" name="addOrder" value="Add to order" >
+          </div>
+          {% else %}
+          <div>
+            Please login!
+          </div>
+          {% endif %}
+        </div>        
+      </div>
+    </form>
+	</div>
+</div>
+</div>
+{% endblock %}

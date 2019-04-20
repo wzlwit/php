@@ -1,0 +1,32 @@
+{% extends "main.html"%}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center my-5 p-5 border rounded">
+<form class="container" action="" method="post">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+	    <div class="form-group col-md-6">
+      <input type="text" class="form-control" id="username" placeholder="user Name" name="username" value="">
+    </div>
+    <div class="form-group col-md-6">
+      <input type="password" class="form-control" id="password" placeholder="Password" name="password" value="">
+    </div>
+	 <div class="form-group col-md-6">
+      
+		<div><input type="checkbox" name="remember" id="remember"  value="">
+		<label for="remember-me">Remember me</label>
+	  
+    </div>
+	  <button type="submit" class="btn btn-secondary" name="login" value="Login" >Login</button>
+	  <div>New User? <a href="registration.php">Sign up Now!</a></div>
+</div>
+  </div>
+  </div>
+  </form>
+  </div>
+{% endblock %}
+
+
+	

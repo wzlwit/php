@@ -1,0 +1,73 @@
+{% extends "main.html"%}
+
+{% block title %}AddProduct{% endblock %}
+
+{% block content %}
+<div id="reg_page" class="container my-5 p-5 border rounded">
+ <form action="addProduct.php" method="POST" enctype="multipart/form-data" >
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="ProName">ProductName</label>
+      <input type="text" class="form-control" id="ProName" name="ProName">
+      {% if errors.ProName != "" %}
+      <small class="text-danger"><b>{{ errors.ProName }}</b></small>
+      {% endif %}
+    </div>            
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label for="ProPrice">Unit Price</label>
+      <input type="number" class="form-control" id="ProPrice" name="ProPrice">
+      {% if errors.ProPrice != "" %}
+      <small class="text-danger"><b>{{ errors.ProPrice }}</b></small>
+      {% endif %}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label for="InvQty">Inventory</label>
+      <input type="number" class="form-control" value="1" id="InvQty" name="InvQty" >
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="ProCategory">Category:</label><br/>
+      {% if errors.ProCategory != "" %}
+      <small class="text-danger"><b>{{ errors.ProCategory }}</b></small><br/>
+      {% endif %}
+      <select id="ProCategory" name="ProCategory">
+          <option value="1">-SELECT-</option>
+          <option value="Laptop">Laptop</option>
+          <option value="Toy&Game">Toy&Game</option>
+          <option value="Books">Books</option>
+          <option value="Music">Music</option>
+          <option value="Movie">Movie</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="ProImg">Image</label>
+      <input type="file" class="form-control" id="ProImg" name="ProImg" >
+    </div>
+  </div>
+  <div class="form-row">
+    <div>
+      <label for="ProDesc">Description</label>
+      {% if errors.ProDesc != "" %}
+      <small class="text-danger"><b>{{ errors.ProDesc }}</b></small>
+      {% endif %}
+      <textarea id="ProDesc" class="form-control" name="ProDesc" cols="80" rows="10"></textarea>
+    </div>
+  </div>
+  <div class="form-row">
+    <div>
+        <label for="Active">Active:</label><input type="checkbox" checked id="Active" name="Active">
+    </div>
+  </div>  
+  <div class="form-row">    
+        <button type="submit" class="btn btn-secondary">Register</button>    
+  </div>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+  {% if error != "" %}
+		  <div class="row">
+        <div class="col-md-12">
+          <div class="alert alert-danger">
+            <h4 class="alert-heading">Oops!</h4>
+            <p class="mb-0">{{error}}</p>
+          </div>
+        </div>
+      </div>
+{% endif %}
+  <div class="pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2>Login</h2>
+          <hr> </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-6 offset-md-3">
+          <form class="" action="" method="post">
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" class="form-control" name="email"> </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" class="form-control" name="password">
+              <small class="form-text text-muted"></small>
+            </div>
+            <button type="submit" class="btn btn-primary">Log Me In</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+ {% endblock %}
+

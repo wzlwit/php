@@ -1,0 +1,35 @@
+  {% extends "main.html" %}
+  {% block content %}
+  <div class="pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2>Poll Question</h2>
+          <hr>
+          <p class="lead">{{db_question.question}}</p>
+		  {% if error != "" %}
+		  <div class="row">
+        <div class="col-md-12">
+          <div class="alert alert-danger">
+            <h4 class="alert-heading">Oops!</h4>
+            <p class="mb-0">{{error}}</p>
+          </div>
+        </div>
+      </div>
+		  {% endif %}
+          <div class="col-md-12 p-3">
+            <form method="post" action="">
+			{% for ans in db_answers %}
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" value="{{ans.id}}" name="answer"> {{ans.answer }} </label>
+              </div>
+			{% endfor %}
+              <button type="submit" class="btn my-2 btn-secondary">Submit button</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

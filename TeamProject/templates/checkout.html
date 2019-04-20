@@ -1,0 +1,111 @@
+{% extends "main.html" %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+<div class="container-fluid row">
+<div class="col pl-5">
+<form action="success.php" method="post">
+  <div class="row form-group">
+  <div class="col">
+    <label for="fname">First Name</label>
+    <input id="fname" type="text" class="form-control" name="fname" value="{{ user.FirstName }}">
+  </div>
+  <div class="col">
+    <label for="lname">Last Name</label>
+    <input id="lname" type="text" class="form-control" name="lname" value="{{ user.LastName }}">
+  </div>
+</div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="{{ user.email }}">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="add1">Ship to</label>
+    <input type="text" class="form-control" id="add1" name="address" value="{{ user.Address }}" >
+  </div>
+  <div class="row form-group">
+  <div class="col">
+    <label for="city">City</label>
+    <input type="text" class="form-control" id="city" name="city" value="{{ user.City }}" >
+  </div>
+  <div class="col">
+    <label for="state">State</label>
+    <input type="text" class="form-control" id="state" name="state" value="{{ user.State }}">
+  </div>
+  <div class="col">
+    <label for="zip">Zip</label>
+    <input type="text" class="form-control" id="zip" name="Zip" value="{{ user.Zip }}" >
+  </div>
+ </div>
+ <div class="dropdown-divider"></div>
+ <h4>Method of Payment</h4>
+ <div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Credit Card">
+  <label class="form-check-label" for="exampleRadios1">
+    Credit Card
+  </label>
+  <br/>
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Debit Card">
+  <label class="form-check-label" for="exampleRadios2">
+    Debit Card
+  </label>
+  <br/>
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="PayPal">
+  <label class="form-check-label" for="exampleRadios3">
+    PayPal
+  </label>
+</div>
+<div class="row form-group">
+<div class="col">
+  <label for="cardname">Name on card</label>
+  <input id="cardname" type="text" class="form-control" placeholder="Full name as displayed on card">
+</div>
+<div class="col">
+  <label for="cardnumber">Card number</label>
+  <input id="cardnumber" type="text" class="form-control" placeholder="Last name">
+</div>
+</div>
+<div class="row form-group">
+<div class="col">
+  <label for="exp">Expiration</label>
+  <input id="exp" type="date" class="form-control" placeholder="Expiration date">
+</div>
+<div class="col">
+  <label for="cvv">CVV</label>
+  <input id="cvv" type="text" class="form-control" placeholder="CVV">
+</div>
+</div>
+  <button type="submit" class="btn btn-primary">Complete payment</button>
+</form>
+</div>
+<!-- -->
+<div class="row pr-5">
+  <div class="modal-header">
+  </div>
+  <div class="modal-body">
+    <table class="border">
+        <tr>
+          <th class="p-1">Product name</th>
+          <th class="p-1">Quantity</th>
+          <th class="p-1">Price</th>
+        </tr>
+        {% for cart in buy_cart %}
+        <tr>
+          <td class="p-1">{{ cart.pname }}</td>
+          <td class="p-1">{{ cart.count }}</td>
+          <td class="p-1">{{ cart.price }}</td>
+        </tr>
+        {% endfor %}       
+        <tr>
+          <td colspan="2"></td>
+          <td><strong>Total:{{ total }}</strong>
+        </tr>
+    </table>
+  </div>
+</div>
+<!-- -->
+</div>
+<br/>
+{% endblock %}

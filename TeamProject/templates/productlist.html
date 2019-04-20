@@ -1,0 +1,47 @@
+{% extends "main.html"%}
+
+{% block title %}All Products{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid mr-5" id="product-category">
+  <div class="float-left">
+    
+    <h6 class="dropdown-header">Category</h6>
+    {% for cate in cates %}
+    <a class="dropdown-item" href="productlist.php?cate={{cate}}">{{cate}}</a>
+    {% endfor %}
+    <div class="dropdown-divider"></div>
+  </div>  
+</div>
+
+
+<!-- menu of products -->
+<div class="container my-5 p-5 border rounded">
+  <div class="scrolling-wrapper">
+<div class="prolist">
+  <div class="figure">
+  <h3>Product List</h3>
+  <ul class="table table-borderless d-inline ml-4">
+      {% for pro in pros %}
+      <li>
+	  <div class="row">
+          <div class="figure" class="col-xs-6 col-sm-3">
+             <a href="productDetail.php?id={{ pro.ProID }}">
+                <img src="{{ pro.ProImg}}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+             </a>
+            <div class="figure-caption">{{ pro.ProName }}</div>
+            <div class="figure-caption">{{ pro.ProDesc }}</div>
+            <div class="badge badge-pill badge-warning">${{ pro.ProPrice}}</div>
+            <a href="productDetail.php?id={{ pro.ProID }}" class="badge badge-primary">details</a>			</div>
+		</div>
+		</li>
+      {% endfor %}     
+  </ul>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
+
+

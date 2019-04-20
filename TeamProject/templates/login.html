@@ -1,0 +1,48 @@
+{% extends "main.html"%}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<div id="reg_page" class="container my-5 p-5 border rounded">
+
+{% if logged_in %}
+	<div class="alert alert-danger">
+		<h4 class="alert-heading"> Oooops! </h4>
+		<p class="mb-0">{{ user_name }} is currently login!</p>
+	</div>
+					
+{% elseif error != "" %}
+	<div class="alert alert-danger">
+		<h4 class="alert-heading"> Oooops! </h4>
+		<p class="mb-0">{{ error }}</p>
+	</div>
+{% endif %}
+		  
+<form action="" method="post"  style="text-align: center; vertical-align: center; margin: 0 auto;  width:250px; margin-top: 10%;">
+  <div class="form-row" >
+    <div class="form-group col-md-12">
+	    <div class="form-group col-md-12">
+      <input type="email" class="form-control" id="email" placeholder="User Name (your email)" name="email" value="{{ email }}">
+    </div><br/>
+    <div class="form-group col-md-12">
+      <input type="password" class="form-control" id="password" placeholder="Password" name="password" value="">
+    </div><br/>
+	 <div class="form-group col-md-12">
+      
+		<div><input type="checkbox" name="remember" id="remember"  value="">
+		<label for="remember-me">Remember me</label><br/>	  
+    </div>
+    <div>
+	  <button type="submit" class="btn btn-secondary" name="login" value="Login" >Login</button><br />
+  </div>
+	  <div><br/> New User? <a href="registration.php">Sign up Now!</a></div>
+</div>
+  </div>
+  </div>
+  </form>
+</div>
+{% endblock %}
+
+
+	

@@ -1,0 +1,48 @@
+{% extends "main.html" %}
+
+{% block content %}
+<table class=" mb-4 table-bordered table " >
+  
+  <thead class="thead-dark" align="center" >
+    <tr>
+      <th>Image</th>
+      <th>ID</th>    
+      <th>Product Name</th>
+      <th>Category</th>
+      <th>Product Price</th>
+      <th>Inventory</th>
+      <th>ImageUrl</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>    
+    {% for pro in products %}
+    <tr class="text-center" >      
+      <td><img src="{{ pro.ProImg }}" alt="productImage" width="80px" height="80"></td>
+      <td><b>{{ pro.ProID }}</b></td>
+      <td>{{ pro.ProName }}</td>
+      <td>{{ pro.ProCategory }}</td>
+      <td>${{ pro.ProPrice }}</td>
+      <td>{{ pro.InvQty }}</td>
+      <td>{{ pro.ProImg }} </td>
+      <td>{{ pro.ProDesc }}</td>
+      <td>{{ pro.Active==1 ? "Active": "NoActive" }}</td>
+      <td width="180px" >
+        <form action="delete_admin.php" method="post" enctype="multipart/form-data">        
+          <input type="hidden" value="{{ pro.ProID }}" name="hid_ProID" />  
+          <button type="submit" class="btn btn-secondary btn-sm ml-1" style="float:left;" >Delete</button>
+        </form>
+        <form action="update_admin.php" method="get" enctype="multipart/form-data">   
+          <input type="hidden" value="{{ pro.ProID }}" name="hid_ProID" />       
+          <button type="submit" class="btn btn-secondary btn-sm mr-1" style="float:right;" >Update</button>
+        </form>
+      </td>
+    </tr>    
+    {% endfor %}     
+  </tbody>
+</table>
+
+{% endblock %}
+  
